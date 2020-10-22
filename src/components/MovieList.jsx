@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 var MovieList = (props) => {
   return (
-    <div class="MovieList">
+    <div className="MovieList">
       {props.movies.map((movie, i) =>
         <MovieListEntry movie={movie} key={i}/>
       )}

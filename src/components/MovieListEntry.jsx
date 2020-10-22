@@ -6,7 +6,7 @@ var MovieListEntry = (props) => {
   // console.log('props from movieList Entry:', props)
   return (
     <div>
-      <div class="movie-list-entry-title">{props.movie.title}</div>
+      <div className="movie-list-entry-title">{props.movie.title}</div>
     </div>
   )
 }
