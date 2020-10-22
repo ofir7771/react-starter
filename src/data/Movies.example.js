@@ -5,5 +5,7 @@ var exampleMoviesData = [
   {title: 'Sunshine'},
   {title: 'Ex Machina'},
 ];
+// var errorMessage = 'No matches found';
 
 export default exampleMoviesData;
+// export default errorMessage;
