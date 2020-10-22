@@ -9,14 +9,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: '',
-      moviesData: exampleMoviesData,
+      moviesData: exampleMoviesData
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value}, function(){console.log('cb state:', this.state)});
+    this.setState({value: event.target.value.toLowerCase()}, function(){console.log('cb state:', this.state)});
 
     // return (console.log('event tracking:', event.target.value))
   }
@@ -29,8 +29,7 @@ class App extends React.Component {
     // });
     var result = [];
     for (var i = 0; i < this.state.moviesData.length; i++) {
-      var movieTitle = this.state.moviesData[i].title;
-      console.log('maybe string:', movieTitle)
+      var movieTitle = this.state.moviesData[i].title.toLowerCase();
       if (movieTitle.indexOf(this.state.value) !== -1) {
         result.push(this.state.moviesData[i]);
       }
