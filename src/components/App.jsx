@@ -16,17 +16,17 @@ class App extends React.Component {
   }
 
   handleChange(event) {
+    // this.setState({moviesSubmit: exampleMoviesData})
+    if (event.target.value === '') {
+      this.setState({moviesData: exampleMoviesData});
+    }
     this.setState({value: event.target.value.toLowerCase()}, function(){console.log('cb state:', this.state)});
 
-    // return (console.log('event tracking:', event.target.value))
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
-    // this.setState({value: event.target.value}, function() {
-    //   console.log('checking to see if it works:', this.state.value)
-    // });
+    // this.setState({moviesSubmit: exampleMoviesData})
     var result = [];
     for (var i = 0; i < this.state.moviesData.length; i++) {
       var movieTitle = this.state.moviesData[i].title.toLowerCase();
@@ -34,9 +34,14 @@ class App extends React.Component {
         result.push(this.state.moviesData[i]);
       }
     }
-    this.setState({moviesData: result}, function() {
-      console.log('current movie data:',this.state.moviesData)
-    });
+    if (result.length === 0) {
+      console.log('<h1>results not found</h1>')
+    }
+      this.setState({moviesData: result}, function() {
+        console.log('current movie data:',this.state.moviesData)
+      });
+
+
     console.log('result:', result)
   }
   // if there is no input - display the initial movies

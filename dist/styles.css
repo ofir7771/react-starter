@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 .MovieList {
   width: 500px;
   background-color: whitesmoke;
