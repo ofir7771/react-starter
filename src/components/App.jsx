@@ -34,6 +34,7 @@ class App extends React.Component {
   // }
   handleSubmit(event) {
     event.preventDefault();
+    console.log('event from handle submit:', event)
     // this.setState({moviesSubmit: exampleMoviesData})
     var result = [];
     for (var i = 0; i < this.state.moviesData.length; i++) {
@@ -53,23 +54,23 @@ class App extends React.Component {
 
   addMovie(event) {
     // when a user clicks submit I want to take the input, create an object for it, and add it to an array, change the state to display user movies only.
-    var input = {title: event.target.value}
-    userMoviesInput.push(input);
-    console.log('event from addMovie:', event)
-    console.log('input from addMovie:', input)
+    event.preventDefault();
+    var value = event.target
+    console.log('this.state.value from addMovie:', this.state.value)
     this.setState({
-      moviesData: userMoviesInput
+      moviesData: [{title: this.state.value}]
     })
   }
+
   render() {
     return (
       <div>
         <div className="title">Movie List</div>
         <div className="add-movie">
-          <AddMovie onAddMovie={this.addMovie} />
+          <AddMovie onAddMovie={this.addMovie} onAddMovieChange={this.handleChange}/>
         </div>
         <div className="search">
-          <Searchbar search={exampleMoviesData} onChange={this.handleChange} onSearch={this.handleSubmit} />
+          <Searchbar search={exampleMoviesData} onInputChange={this.handleChange} onSearch={this.handleSubmit} />
         </div>
         <div>
           <MovieList movies={this.state.moviesData} />
