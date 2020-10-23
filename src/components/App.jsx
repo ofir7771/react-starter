@@ -15,10 +15,12 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addMovie = this.addMovie.bind(this);
+    this.toWatchButton = this.toWatchButton.bind(this);
+    this.watchedButton = this.watchedButton.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value.toLowerCase()}, function(){console.log('cb state:', this.state)});
+    this.setState({value: event.target.value.toLowerCase()});
 
   }
   handleSubmit(event) {
@@ -30,9 +32,7 @@ class App extends React.Component {
         result.push(this.state.moviesData[i]);
       }
     }
-      this.setState({moviesData: result}, function() {
-        console.log('current movie data:',this.state.moviesData);
-      });
+      this.setState({moviesData: result});
   }
 
   addMovie(event) {
@@ -43,6 +43,14 @@ class App extends React.Component {
     })
   }
 
+  toWatchButton(event) {
+    this.setState({moviesData: exampleMoviesData})
+  }
+  watchedButton(event) {
+    this.setState({moviesData: exampleMoviesData})
+  }
+
+
   render() {
     return (
       <div>
@@ -51,8 +59,10 @@ class App extends React.Component {
           <AddMovie onAddMovie={this.addMovie} onAddMovieChange={this.handleChange}/>
         </div>
         <div className="search">
-          <Searchbar  onInputChange={this.handleChange} onSearch={this.handleSubmit} />
+          <Searchbar onInputChange={this.handleChange} onSearch={this.handleSubmit} />
         </div>
+          <button onClick={this.toWatchButton}>toWatchButton</button>
+          <button onClick={this.watchedButton}>watchedButton</button>
         <div>
           <MovieList movies={this.state.moviesData} />
         </div>
